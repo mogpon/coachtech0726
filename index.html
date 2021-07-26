@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>タブ切り替え</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li @click="change('1')" :class="{'active': num === '1'}">タブ1</li>
+      <li @click="change('2')" :class="{'active': num === '2'}">タブ2</li>
+      <li @click="change('3')" :class="{'active': num === '3'}">タブ3</li>
+    </ul>
+    <p>コンテンツ{{ num }}</p>
+  </div>
+
+  <script>
+    const vm = new Vue ({
+      el:'#app',
+      data(){
+        return{
+          num:'1',
+
+        }
+      },
+      methods:{
+        change:function(select){
+          return this.num = select;
+        }
+      }
+    })
+  </script>
+  <style>
+    ul {
+      margin:0;
+      padding:0;
+      display: flex;
+    }
+    li {
+      text-align: center;
+      padding: 10px 0;
+      cursor: pointer;
+      list-style: none;
+      width: 100px;
+      border: 1px solid #000;
+    }
+    ul li.active {
+      background-color: #000;
+      border-color: #000;
+      color: #fff;
+      cursor: auto;
+    }
+  </style>
+</body>
+</html>
